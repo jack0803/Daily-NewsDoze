@@ -1,0 +1,10 @@
+newsapi key:0d50c1badb6e41fd9f1699a056829743
+async componentDidMount()
+  {
+    console.log("fetching");
+    let url = "https://newsapi.org/v2/top-headlines?country=in&category=business&apiKey=0d50c1badb6e41fd9f1699a056829743";
+    let data = await fetch(url);
+    let parsedata =await data.json();
+    console.log(data);
+    this.setState({articales:parsedata.articales})
+  }
