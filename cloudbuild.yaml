@@ -1,0 +1,14 @@
+version: 1.0
+orbs:
+  node: circleci/node@2.2.0
+
+jobs:
+  build:
+    executor: node/default
+    steps:
+      - checkout
+      - run: npm install
+      - run: npm test
+      - run: npm run build
+      - run: npm run minify
+      - run: gcloud compute deployments create dailynews --image gcr.io/dailynews/dailynews:latest
